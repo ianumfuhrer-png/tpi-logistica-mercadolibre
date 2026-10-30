@@ -18,7 +18,7 @@ Este repositorio aloja la documentación técnica del proyecto.
 
 ## Enlaces
 
-- Tablero de gestión (GitHub Projects): `PEGAR_ENLACE_DEL_TABLERO`
+- Tablero de gestión (GitHub Projects): https://github.com/users/ianumfuhrer-png/projects/1
 
 ## Contenido del repositorio
 
