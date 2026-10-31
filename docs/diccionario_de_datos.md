@@ -1,6 +1,6 @@
 # Diccionario de datos inicial
 
-PK: clave primaria. FK: clave foránea. Las longitudes y los dominios son una propuesta inicial de diseño.
+Elementos documentados por campo: nombre, tipo y longitud, clave, descripción y valores permitidos. PK: clave primaria. FK: clave foránea.
 
 ## USUARIO
 
@@ -76,3 +76,14 @@ Orden en que cada repartidor entrega sus paquetes en la jornada; controla las no
 | estado | String(10) |  | PENDIENTE, EN_CURSO, ENTREGADA o FALLIDA. | PENDIENTE, EN_CURSO, ENTREGADA o FALLIDA |
 | notificado | Boolean |  | Verdadero cuando ya se avisó al comprador; solo se activa al entregarse la orden anterior (M5). | Por defecto falso |
 | fecha_hora_entrega | DateTime |  | Momento exacto de la entrega; vacío hasta que ocurre. | Vacío hasta la entrega |
+
+## Relaciones entre entidades
+
+| Origen | Relación | Destino | Significado |
+|---|---|---|---|
+| USUARIO (comprador) | 1 a N | ENVIO | Un comprador puede tener varios envíos |
+| ENVIO | 1 a N (mín. 1, máx. 5) | ITEM ENVIO | Un envío agrupa de 1 a 5 objetos |
+| USUARIO (vendedor) | 1 a N | ITEM ENVIO | Un vendedor aporta objetos a muchos envíos |
+| ENVIO | 1 a N | EVENTO SEGUIMIENTO | Un envío acumula muchos eventos de posición |
+| ENVIO | 1 a N | ORDEN ENTREGA | Normalmente una orden; más de una si hay reintentos |
+| USUARIO (repartidor) | 1 a N | ORDEN ENTREGA | Un repartidor tiene varias órdenes por jornada |
